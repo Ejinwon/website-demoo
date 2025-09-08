@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Digital Fortune Cookie</title>
+  <style>
+    body {
+      font-family: 'Trebuchet MS', sans-serif;
+      background-color: #fef6e4;
+      color: #001858;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #f582ae;
+    }
+
+    #fortune-box {
+      border: 2px solid #8bd3dd;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      min-height: 60px;
+      width: 60%;
+      text-align: center;
+      font-size: 1.2rem;
+      background-color: #fffffe;
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    button {
+      background-color: #f582ae;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #e54b76;
+    }
+
+    #counter {
+      margin-top: 15px;
+      font-size: 1rem;
+      color: #172c66;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Your Fortune For Today 🍪</h1>
+  
+  <div id="fortune-box">Click the button to reveal your fortune!</div>
+  
+  <button onclick="showFortune()">Open Fortune Cookie</button>
+  
+  <div id="counter">Fortunes opened: 0</div>
+
+  <script>
+    const fortunes = [
+      "A beautiful, smart, and loving person will be coming into your life.",
+      "Now is the time to try something new.",
+      "You will make a valuable discovery today.",
+      "Happiness is around the corner—keep going!",
+      "A new opportunity will soon present itself.",
+      "Your kindness will lead you to success.",
+      "Someone is secretly admiring you.",
+      "You will travel to a new place this year.",
+      "Hard work pays off—expect rewards soon.",
+      "Your dreams are within reach; don’t give up."
+    ];
+
+    let count = 0;
+
+    function showFortune() {
+      const randomIndex = Math.floor(Math.random() * fortunes.length);
+      const fortuneBox = document.getElementById("fortune-box");
+      fortuneBox.style.opacity = 0;
+
+      setTimeout(() => {
+        fortuneBox.textContent = fortunes[randomIndex];
+        fortuneBox.style.opacity = 1;
+      }, 300);
+
+      count++;
+      document.getElementById("counter").textContent = "Fortunes opened: " + count;
+    }
+  </script>
+
+</body>
+</html>
